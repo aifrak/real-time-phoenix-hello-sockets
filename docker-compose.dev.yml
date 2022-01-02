@@ -1,0 +1,7 @@
+version: "3.9"
+
+services:
+  app:
+    image: aifrak/real-time-phoenix:dev
+    build:
+      target: dev
