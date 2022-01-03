@@ -27,6 +27,14 @@ defmodule HelloSocketsWeb.PingChannel do
     {:stop, :shutdown, {:ok, %{msg: "shutting down"}}, socket}
   end
 
+  def handle_in("param_ping", %{"error" => true}, socket) do
+    {:reply, {:error, %{reason: "You asked for this!"}}, socket}
+  end
+
+  def handle_in("param_ping", payload, socket) do
+    {:reply, {:ok, payload}, socket}
+  end
+
   def handle_out("request_ping", payload, socket) do
     push(socket, "send_ping", Map.put(payload, "from_node", Node.self()))
     {:noreply, socket}
