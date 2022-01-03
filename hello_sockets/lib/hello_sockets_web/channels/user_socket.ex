@@ -1,6 +1,11 @@
 defmodule HelloSocketsWeb.UserSocket do
   use Phoenix.Socket
 
+  ## Channels
+  channel "ping", HelloSocketsWeb.PingChannel
+  channel "ping:*", HelloSocketsWeb.PingChannel
+  channel "wild:*", HelloSocketsWeb.WildcardChannel
+
   # A Socket handler
   #
   # It's possible to control the websocket connection and
@@ -18,7 +23,6 @@ defmodule HelloSocketsWeb.UserSocket do
   #
   # See the [`Channels guide`](https://hexdocs.pm/phoenix/channels.html)
   # for futher details.
-
 
   # Socket params are passed from the client and can
   # be used to verify and authenticate a user. After
