@@ -6,6 +6,7 @@ defmodule HelloSocketsWeb.AuthSocket do
   channel "ping", HelloSocketsWeb.PingChannel
   channel "tracked", HelloSocketsWeb.TrackedChannel
   channel "user:*", HelloSocketsWeb.AuthChannel
+  channel "recurring", HelloSocketsWeb.RecurringChannel
 
   @one_day 86400
 

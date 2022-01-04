@@ -5,6 +5,7 @@ defmodule HelloSocketsWeb.UserSocket do
   channel "ping", HelloSocketsWeb.PingChannel
   channel "ping:*", HelloSocketsWeb.PingChannel
   channel "wild:*", HelloSocketsWeb.WildcardChannel
+  channel "dupe", HelloSocketsWeb.DedupeChannel
 
   # A Socket handler
   #
