@@ -4,6 +4,12 @@ const socket = new Socket("/socket", {})
 
 socket.connect()
 
+const authSocket = new Socket("/auth_socket", {
+  params: { token: window.authToken }
+})
+authSocket.onOpen(() => console.log('authSocket connected'))
+authSocket.connect()
+
 const channel = socket.channel("ping")
 
 channel.join()

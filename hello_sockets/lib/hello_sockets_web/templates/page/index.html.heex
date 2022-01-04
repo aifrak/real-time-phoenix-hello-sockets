@@ -1,3 +1,8 @@
+<script>
+  window.authToken = "<%= assigns[:auth_token] %>";
+  window.userId = "<%= assigns[:user_id] %>";
+</script>
+
 <section class="phx-hero">
   <h1><%= gettext "Welcome to %{name}!", name: "Phoenix" %></h1>
   <p>Peace of mind from prototype to production</p>
