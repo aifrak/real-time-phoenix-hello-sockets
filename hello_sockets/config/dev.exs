@@ -63,3 +63,6 @@ config :phoenix, :stacktrace_depth, 20
 
 # Initialize plugs at runtime for faster development compilation
 config :phoenix, :plug_init_mode, :runtime
+
+config :statsd_logger, port: 8126
+config :statix, HelloSockets.Statix, port: 8126
