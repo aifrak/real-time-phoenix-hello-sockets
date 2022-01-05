@@ -3,6 +3,10 @@ defmodule HelloSockets.Application do
   # for more information on OTP Applications
   @moduledoc false
 
+  # alias HelloSockets.Pipeline.{Consumer, Producer}
+  alias HelloSockets.Pipeline.Producer
+  alias HelloSockets.Pipeline.ConsumerSupervisor, as: Consumer
+
   use Application
 
   @impl true
@@ -14,6 +18,8 @@ defmodule HelloSockets.Application do
       HelloSocketsWeb.Telemetry,
       # Start the PubSub system
       {Phoenix.PubSub, name: HelloSockets.PubSub},
+      {Producer, name: Producer},
+      {Consumer, subscribe_to: [{Producer, max_demand: 10, min_demand: 5}]},
       # Start the Endpoint (http/https)
       HelloSocketsWeb.Endpoint
       # Start a worker by calling: HelloSockets.Worker.start_link(arg)

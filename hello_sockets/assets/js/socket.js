@@ -101,4 +101,14 @@ for (let i = 0; i < 5; i++) {
 console.log("5 parallel slow pings requested")
 
 
+const authUserChannel = authSocket.channel(`user:${window.userId}`)
+authUserChannel.on("push", (payload) => {
+  console.log("received auth user push", payload)
+})
+authUserChannel.on("push_timed", (payload) => {
+  console.log("received timed auth user push", payload)
+})
+authUserChannel.join()
+
+
 export default socket
