@@ -13,6 +13,13 @@ authSocket.connect()
 const statsSocket = new Socket("/stats_socket", {})
 statsSocket.connect()
 
+const slowStatsSocket = new Socket("/stats_socket", {})
+slowStatsSocket.connect()
+
+const fastStatsSocket = new Socket("/stats_socket", {})
+fastStatsSocket.connect()
+
+
 const channel = socket.channel("ping")
 
 channel.join()
@@ -74,5 +81,24 @@ statsChannelValid.join()
 for (let i = 0; i < 5; i++) {
   statsChannelValid.push("ping", {})
 }
+
+
+const slowStatsChannel = slowStatsSocket.channel("valid")
+slowStatsChannel.join()
+for (let i = 0; i < 5; i++) {
+  slowStatsChannel.push("slow_ping", {})
+    .receive("ok", () => console.log("Slow ping response received", i))
+}
+console.log("5 slow pings requested")
+
+
+const fastStatsChannel = fastStatsSocket.channel("valid")
+fastStatsChannel.join()
+for (let i = 0; i < 5; i++) {
+  fastStatsChannel.push("parallel_slow_ping", {})
+    .receive("ok", () => console.log("Parallel slow ping response", i))
+}
+console.log("5 parallel slow pings requested")
+
 
 export default socket
