@@ -2,6 +2,6 @@ version: "3.9"
 
 services:
   app:
-    image: aifrak/real-time-phoenix:dev
+    image: aifrak/real-time-phoenix-hello-sockets:dev
     build:
       target: dev
