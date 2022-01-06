@@ -1,3 +1,3 @@
-# Real-Time Phoenix - hello-socket
+# Real-Time Phoenix - hello-sockets
 
 Code from the book "Real-Time Phoenix" from part I.
