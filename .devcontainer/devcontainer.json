@@ -1,5 +1,5 @@
 {
-  "name": "real-time-phoenix",
+  "name": "real-time-phoenix-hello-sockets",
   "dockerComposeFile": [
     "../docker-compose.yml",
     "../docker-compose.dev.yml",
