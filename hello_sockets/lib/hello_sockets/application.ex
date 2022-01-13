@@ -21,9 +21,10 @@ defmodule HelloSockets.Application do
       {Producer, name: Producer},
       {Consumer, subscribe_to: [{Producer, max_demand: 10, min_demand: 5}]},
       # Start the Endpoint (http/https)
-      HelloSocketsWeb.Endpoint
+      HelloSocketsWeb.Endpoint,
       # Start a worker by calling: HelloSockets.Worker.start_link(arg)
       # {HelloSockets.Worker, arg}
+      {HelloSocketsWeb.UserTracker, [pool_size: :erlang.system_info(:schedulers_online)]}
     ]
 
     # See https://hexdocs.pm/elixir/Supervisor.html

@@ -19,6 +19,11 @@ slowStatsSocket.connect()
 const fastStatsSocket = new Socket("/stats_socket", {})
 fastStatsSocket.connect()
 
+const trackedSocket = new Socket("/auth_socket", {
+  params: { token: window.authToken }
+})
+trackedSocket.connect()
+
 
 const channel = socket.channel("ping")
 
@@ -109,6 +114,10 @@ authUserChannel.on("push_timed", (payload) => {
   console.log("received timed auth user push", payload)
 })
 authUserChannel.join()
+
+
+const trackerChannel = trackedSocket.channel("tracked")
+trackerChannel.join()
 
 
 export default socket
